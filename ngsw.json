@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1556047268930,
+  "timestamp": 1556047410486,
   "index": "https://robertleroy.github.io/colors/index.html",
   "assetGroups": [
     {
@@ -49,7 +49,7 @@
     "https://robertleroy.github.io/colors/assets/symbol-defs.svg": "89c45ec20631d3788abcc0a350c8d3db04734ca7",
     "https://robertleroy.github.io/colors/es2015-polyfills.c5dd28b362270c767b34.js": "b7a81c61d32b0b12737f0c13f45973ba391cd7f9",
     "https://robertleroy.github.io/colors/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "https://robertleroy.github.io/colors/index.html": "96780ea57ed46b5e6e0d9f0e1c1f4d994beb53de",
+    "https://robertleroy.github.io/colors/index.html": "7cabbc317e1d9ed2f1dfe7e1b41d42b0a1c5c00e",
     "https://robertleroy.github.io/colors/main.ef5a4100ed1f63ec1a1a.js": "a6e9c25d725a04d17e33fc2d97995f3858a38ad2",
     "https://robertleroy.github.io/colors/polyfills.8bbb231b43165d65d357.js": "ffa449995bf2eba2ccd0a002417214f7eb75e7b5",
     "https://robertleroy.github.io/colors/runtime.26209474bfa8dc87a77c.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
