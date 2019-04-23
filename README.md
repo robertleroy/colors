@@ -5,8 +5,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## angular-cli-ghpages
 
-ng build --prod
-ngh --dir=dist/colors
+- ng build --prod
+- ngh --dir=dist/colors
 
 ## Heading
 
