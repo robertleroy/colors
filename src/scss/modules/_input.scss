@@ -1,0 +1,64 @@
+
+
+// <div class='input-group'>
+//   <button class='locate-button'>
+//     <i class="material-icons">
+//       my_location
+//     </i>
+//   </button>
+  
+//   <input type="text" placeholder='search..'>
+  
+//   <button class='search-button'>
+//     <i class="material-icons">
+//       search
+//     </i>      
+//   </button>
+// </div>
+
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+.input-group {
+  display: flex;
+  height: 36px;
+  max-width: 500px;
+
+  [type='text'] {
+    flex: 1;
+    padding: 0 12px;
+    border: none;
+    box-shadow:
+      0 4px 0 -2px rgba(73,73,73,0.3);
+    margin: 0 6px;
+    transition: all 0.5s;
+
+    &::placeholder {
+      color: rgba(72,72,72,0.65);
+    }
+    &:focus {
+      box-shadow:
+      0 4px 0 -2px #0169ce;
+    }
+  }
+  button {
+    display: flex;
+    padding: 6px 12px;
+    border: none;
+    outline: none;
+    border-radius: 0 4px 4px 0;
+    background: transparent;
+    cursor: pointer;
+    color: #494949;  
+    transition: all 0.2s;
+
+    &:first-of-type {
+      border-radius: 4px 0 0 4px;
+    }
+    &:hover {
+      background: rgba(117, 177, 253, 0.2);
+    }
+    &:active {
+      background: rgba(117, 177, 253, 0.5);
+      color: #0169ce;
+    }
+  }
+}

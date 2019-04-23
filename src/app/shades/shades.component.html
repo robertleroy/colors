@@ -1,0 +1,26 @@
+<!-- shades works! -->
+
+
+<section class="header">
+  <em>monochromatics:</em>
+
+  <div class="number-group">
+    <em>max items: </em>
+    <input type="number" min='0' max='360' [(ngModel)]='maxItems' (input)='monochromatics()'>
+  </div>
+
+  <mat-icon icon='swap_vert' (click)='swapColors()'></mat-icon>
+</section>
+
+
+<section class="list">
+  <div class="listItem" *ngFor='let color of colors' [style.color]="color.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='color.hex' (dblclick)='colorClick(color)'>
+    <div [ngSwitch]='colorMode'>
+      <div *ngSwitchCase="'hex'">{{color.hex}}</div>
+      <div *ngSwitchCase="'rgb'">{{color.rgb}}</div>
+      <div *ngSwitchCase="'hsl'">{{color.hsl}}</div>
+    </div>
+
+    <mat-icon icon='add' (click)='updateFavorites(color)'></mat-icon>
+  </div>
+</section>

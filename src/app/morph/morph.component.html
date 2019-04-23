@@ -1,0 +1,38 @@
+<!-- morph works! -->
+
+<section class="header">
+
+  <div class="number-group">
+    <em>hue: </em>
+    <input type="number" min='-360' max='360' [(ngModel)]='hueShift' (input)='shift()'>
+  </div>
+
+  <div class="number-group">
+    <em>sat: </em>
+    <input type="number" min='-100' max='100' [(ngModel)]='satShift' (input)='shift()'>
+  </div>
+
+  <div class="number-group">
+    <em>light: </em>
+    <input type="number" min='-100' max='100' [(ngModel)]='lightShift' (input)='shift()'>
+  </div>
+
+  <div class="number-group">
+    <em>max items: </em>
+    <input type="number" min='0' max='360' [(ngModel)]='maxItems' (input)='shift()'>
+  </div>
+
+  <mat-icon icon='swap_vert' (click)='swapColors()'></mat-icon>
+</section>
+
+<section class="list">
+  <div class="listItem" *ngFor='let color of colors' [style.color]="color.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='color.hex' (dblclick)='colorClick(color)'>
+    <div [ngSwitch]='colorMode'>
+      <div *ngSwitchCase="'hex'">{{color.hex}}</div>
+      <div *ngSwitchCase="'rgb'">{{color.rgb}}</div>
+      <div *ngSwitchCase="'hsl'">{{color.hsl}}</div>
+    </div>
+
+    <mat-icon icon='add' (click)='updateFavorites(color)'></mat-icon>
+  </div>
+</section>

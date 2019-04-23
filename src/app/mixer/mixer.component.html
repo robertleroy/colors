@@ -1,0 +1,28 @@
+<!-- mixer works! -->
+
+<section class="header">
+  <div class="text-group">
+    <em>mix color: </em>
+    <input type="text" autocomplete="off" [(ngModel)]='color2String' (keyup.enter)='updateMix()'>
+  </div>
+
+  <div class="number-group">
+    <em>max items: </em>
+    <input type="number" min='0' max='360' [(ngModel)]='steps' (input)='updateMix()'>
+  </div>
+
+  <mat-icon icon='swap_vert' (click)='swapColors()'></mat-icon>
+</section>
+
+
+<section class="list">
+  <div class="listItem" *ngFor='let color of colors' [style.color]="color.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='color.hex' (dblclick)='colorClick(color)'>
+    <div [ngSwitch]='colorMode'>
+      <div *ngSwitchCase="'hex'">{{color.hex}}</div>
+      <div *ngSwitchCase="'rgb'">{{color.rgb}}</div>
+      <div *ngSwitchCase="'hsl'">{{color.hsl}}</div>
+    </div>
+
+    <mat-icon icon='add' (click)='updateFavorites(color)'></mat-icon>
+  </div>
+</section>

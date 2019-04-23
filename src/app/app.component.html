@@ -1,21 +1,158 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- app.component.html -->
+<header class='header'>
+  <div class="text-group">
+    <input type="text" [(ngModel)]='baseString' (change)='updateColor()'>
+  </div>
 
-<router-outlet></router-outlet>
+  <div class="tabs">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/mixer" routerLinkActive="active">Mixer</a>
+    <a routerLink="/shifter" routerLinkActive="active">Shifter</a>
+    <a routerLink="/shades" routerLinkActive="active">Shades</a>
+    <a routerLink="/morph" routerLinkActive="active">Morph</a>
+  </div>
+</header>
+
+
+<main class='main'>
+
+  <!-- #region info ======================== -->
+  <section class="info">
+    <div class="strings">
+      <div [ngSwitch]='base.name.length > 0'>
+        <em *ngSwitchCase='false'>no name</em>
+        <div *ngSwitchCase='true'>{{base.name}}</div>
+      </div>
+      <div>{{base.hex}}</div>
+      <div>{{base.rgb}}</div>
+      <div>{{base.hsl}}</div>
+    </div>
+    <div class="colorBox" [style.color]="base.yiq > 128 ? '#454545' : '#f7f7f7' " [style.background]='base.hex'>
+
+      <div [ngSwitch]='colorMode'>
+        <div *ngSwitchCase="'hex'">{{base.hex}}</div>
+        <div *ngSwitchCase="'rgb'">{{base.rgb}}</div>
+        <div *ngSwitchCase="'hsl'">{{base.hsl}}</div>
+      </div>
+
+      <!-- <div class="material-icons" (click)='updateFavorites(base.hex)'>add</div> -->
+      <mat-icon icon='add' (click)='updateFavorites(base.hex)'></mat-icon>
+    </div>
+  </section>
+  <!-- #endregion info ======================== -->
+
+
+
+  <!-- #region hsl-sliders ======================== -->
+  <section class="hsl-sliders">
+
+    <div class="slider-group hue">
+      <div class="numeric">
+        <em>Hue:</em>
+        <input class='number' type="number" max=360 min=0 [(ngModel)]='base.h' (input)='changeHsl()' (change)='updateColor()'>
+      </div>
+      <input class='slider' type="range" max=360 min=0 [(ngModel)]='base.h' (input)='changeHsl()' (change)='updateColor()'>
+    </div>
+
+    <div class="slider-group sat">
+      <div class="numeric">
+        <em>Sat:</em>
+        <input class='number' type="number" max=100 min=0 [(ngModel)]='base.s' (input)='changeHsl()' (change)='updateColor()'>
+      </div>
+      <input class='slider' type="range" max=100 min=0 [(ngModel)]='base.s' (input)='changeHsl()' (change)='updateColor()'>
+    </div>
+
+    <div class="slider-group light">
+      <div class="numeric">
+        <em>Light:</em>
+        <input class='number' type="number" max=100 min=0 [(ngModel)]='base.l' (input)='changeHsl()' (change)='updateColor()'>
+      </div>
+      <input class='slider' type="range" max=100 min=0 [(ngModel)]='base.l' (input)='changeHsl()' (change)='updateColor()'>
+    </div>
+  </section>
+  <!-- #endregion hsl-sliders ======================== -->
+
+
+
+  <!-- #region rgb-sliders ======================== -->
+  <section class="rgb-sliders">
+    <div class="slider-group red">
+      <div class="numeric">
+        <em>Red:</em>
+        <input class='number' type="number" max=255 min=0 [(ngModel)]='base.r' (input)='changeRgb()' (change)='updateColor()'>
+      </div>
+      <input class='slider' type="range" max=255 min=0 [(ngModel)]='base.r' (input)='changeRgb()' (change)='updateColor()'>
+    </div>
+
+    <div class="slider-group green">
+      <div class="numeric">
+        <em>Green:</em>
+        <input class='number' type="number" max=255 min=0 [(ngModel)]='base.g' (input)='changeRgb()' (change)='updateColor()'>
+      </div>
+      <input class='slider' type="range" max=255 min=0 [(ngModel)]='base.g' (input)='changeRgb()' (change)='updateColor()'>
+    </div>
+
+    <div class="slider-group blue">
+      <div class="numeric">
+        <em>Blue:</em>
+        <input class='number' type="number" max=255 min=0 [(ngModel)]='base.b' (input)='changeRgb()' (change)='updateColor()'>
+      </div>
+      <input class='slider' type="range" max=255 min=0 [(ngModel)]='base.b' (input)='changeRgb()' (change)='updateColor()'>
+    </div>
+  </section>
+  <!-- #endregion rgb-sliders ======================== -->
+
+
+
+
+  <!-- #region favs ======================== -->
+  <!-- *ngIf="favorites.length" -->
+  <section class="favs" [@fade]>
+    <div class="fav" *ngFor='let fav of favorites; let i = index;' [style.color]="fav.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='fav.hex' (dblclick)='colorClick(fav)'>
+      <div [ngSwitch]='colorMode'>
+        <div *ngSwitchCase="'hex'">{{fav.hex}}</div>
+        <div *ngSwitchCase="'rgb'">{{fav.rgb}}</div>
+        <div *ngSwitchCase="'hsl'">{{fav.hsl}}</div>
+      </div>
+
+      <mat-icon icon='clear' (click)='removeFavorite(i)'></mat-icon>
+    </div>
+  </section>
+  <!-- #endregion favs ======================== -->
+
+
+
+  <!-- #region mobile-tabs ======================== -->
+  <section class="mobile-tabs">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/mixer" routerLinkActive="active">Mixer</a>
+    <a routerLink="/shifter" routerLinkActive="active">Shifter</a>
+    <a routerLink="/shades" routerLinkActive="active">Shades</a>
+    <a routerLink="/morph" routerLinkActive="active">Morph</a>
+  </section>
+  <!-- #endregion mobile-tabs ======================== -->
+
+
+  <!-- #region router ======================== -->
+  <!-- <section class='split-right'> -->
+  <div class="router" [@routerFade]="o.isActivated ? o.activatedRoute : ''">
+    <router-outlet #o="outlet"></router-outlet>
+  </div>
+  <!-- </section> -->
+  <!-- #endregion router ======================== -->
+
+</main>
+
+
+<footer class='footer'>
+  <div class="select">
+    <em>color mode:</em>
+    <select [(ngModel)]='colorMode' (change)='updateColorMode()'>
+      <option value="hex">hex</option>
+      <option value="rgb">rgb</option>
+      <option value="hsl">hsl</option>
+    </select>
+  </div>
+
+  <div class="dodgerblue" (dblclick)='dodgerBlue()'></div>
+</footer>

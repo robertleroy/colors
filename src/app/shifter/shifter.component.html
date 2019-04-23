@@ -1,0 +1,28 @@
+<!-- shifter works! -->
+
+<section class="header">
+  <div class="number-group">
+    <em class="degree">hue shift: </em>
+    <input type="number" min='3' max='180' [(ngModel)]='hueShift' (input)='updateMix()'>
+  </div>
+
+  <div class="number-group">
+    <em>max items: </em>
+    <input type="number" min='0' max='360' [(ngModel)]='maxItems' (input)='updateMix()'>
+  </div>
+
+  <mat-icon icon='swap_vert' (click)='swapColors()'></mat-icon>
+</section>
+
+
+<section class="list">
+  <div class="listItem" *ngFor='let color of colors' [style.color]="color.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='color.hex' (dblclick)='colorClick(color)'>
+    <div [ngSwitch]='colorMode'>
+      <div *ngSwitchCase="'hex'">{{color.hex}}</div>
+      <div *ngSwitchCase="'rgb'">{{color.rgb}}</div>
+      <div *ngSwitchCase="'hsl'">{{color.hsl}}</div>
+    </div>
+
+    <mat-icon icon='add' (click)='updateFavorites(color)'></mat-icon>
+  </div>
+</section>

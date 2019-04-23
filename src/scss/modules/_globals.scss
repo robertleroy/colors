@@ -1,0 +1,54 @@
+// globals //
+
+
+:root {
+  --activeLink: dodgerblue;
+  --lightText: #bebebe;
+  --darkText: #414141;
+  --hoverColor: #1e90ff;
+}
+
+$text-light: #bebebe;
+$text-dark: #303030;
+
+body {
+  background: #454545;
+  color: var(--lightText);
+}
+
+input, select, a {
+  color: var(--lightText);
+}
+label:hover {
+  color: $hoverColor;
+}
+option {
+  color: var(--darkText);
+}
+
+[type=text], [type=number] { 
+  text-align: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%,#ccc 50%);
+  background-position: 0 90%;
+  background-repeat: repeat-x;
+  background-size: 100% 0.15rem;
+  
+  &:focus {
+    background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%, var(--activeLink) 50%);
+  }
+}
+
+/* hide & turn off spinners */
+[type="number"] {
+  -moz-appearance: textfield; 
+  
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+}
+

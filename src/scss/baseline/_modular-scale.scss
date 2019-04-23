@@ -1,0 +1,86 @@
+// #region MODULAR SCALE =================
+:root {
+  --h1: 28px;
+  --h2: 25px;
+  --h3: 22px;
+  --h4: 20px;
+  --h5: 18px;
+  --h6: 16px;
+  --h7: 14px;
+  --h8: 13px;
+  --h9: 12px;
+  --line-height-hi: 36px;
+  --line-height: 24px;  
+  --line-width: 500px;  // 500px wide
+  --max-width: 500px;  // 500px wide
+  --root: 12px;
+  
+  @include media(640px) {
+    --h1: 30px;
+    --h2: 27px;
+    --h3: 24px;
+    --h4: 21px;
+    --h5: 20px;
+    --h6: 17px;
+    --h7: 15px;
+    --h8: 14px;
+    --h9: 13px;
+    --line-height-hi: 42px;
+    --line-height: 28px;    
+    --line-width: 550px;  // 550px wide
+    --max-width: 600px;  // 600px wide
+    --root: 14px;
+  }
+  
+  @include media(800px) {
+    --h1: 32px;
+    --h2: 28px;
+    --h3: 26px;
+    --h4: 23px;
+    --h5: 21px;
+    --h6: 18px;
+    --h7: 16px;
+    --h8: 14px;
+    --h9: 13px;
+    --line-height-hi: 45px;
+    --line-height: 30px;    
+    --line-width: 600px;  // 600px wide
+    --max-width: 800px;  // 800px wide
+    --root: 15px;
+  }
+  
+  @include media(1024px) {
+    --h1: 40px;
+    --h2: 36px;
+    --h3: 30px;
+    --h4: 27px;
+    --h5: 23px;
+    --h6: 20px;
+    --h7: 17px;
+    --h8: 15px;
+    --h9: 13px;
+    --line-height-hi: 51px;
+    --line-height: 34px;    
+    --line-width: 680px;  // 680px wide
+    --max-width: 1100px; // 110px wide
+    --root: 17px;
+  }
+  
+  @include media(1600px) {
+    --h1: 50px;
+    --h2: 44px;
+    --h3: 35px;
+    --h4: 31px;
+    --h5: 25px;
+    --h6: 22px;
+    --h7: 18px;
+    --h8: 16px;
+    --h9: 14px;
+    --line-height-hi: 57px;
+    --line-height: 38px;    
+    --line-width: 750px;   // 750px wide
+    --max-width: 1300px;  // 1300px wide  
+    --root: 19px;
+  }
+} // :root 
+// #endregion MODULAR SCALE =================

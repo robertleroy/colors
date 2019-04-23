@@ -1,0 +1,611 @@
+
+@import './modular-scale';
+
+// Document ======================== //
+
+html {
+  // This makes 1rem == half line-height //
+  font-size: var(--root);  
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  min-height: 100vh;
+}
+
+// Site-wide base styles.
+body {
+  font-size: var(--h6);
+  line-height: 2rem;
+  background-color: $backgroundColor;
+  color: $bodyColor;
+
+  font-family: unquote(map-get($bodytype, font-family));
+  font-style: normal;
+  font-weight: map-get($bodytype, regular);
+  min-height: 100vh;
+}
+
+// Headings ======================== //
+
+// OpenType ligatures, discretionary ligatures and lining figures enabled if available.
+h1, h2, h3, h4, h5, h6 {
+  color: $headingColor;
+  font-family: unquote(map-get($headingtype, font-family));
+  font-feature-settings: 'dlig', 'liga', 'lnum', 'kern';
+  font-style: normal;
+  font-weight: map-get($headingtype, bold);
+
+  // margin-top: 1rem;
+}
+
+h1, .h1 {
+  // margin-top: 2rem;
+}
+
+// Heading level 1.
+h1, .h2 {
+  font-size: var(--h1);
+  line-height: 3rem;
+}
+
+// Heading level 2.
+h2, .h2 {
+  font-size: var(--h2);
+  line-height: 3rem;
+}
+
+// Heading level 3.
+h3, .h3 {
+  font-size: var(--h3);
+  line-height: 3rem;
+}
+
+// Heading level 4.
+h4, .h4 {
+  font-size: var(--h4);
+  line-height: 2rem;
+}
+
+// Heading level 5.
+h5, .h5 {
+  font-size: var(--h5);
+  line-height: 2rem;
+}
+
+// Heading level 6.
+h6, .h6 {
+  font-size: var(--h6);
+  line-height: 2rem;
+}
+
+.h7 {
+  font-size: var(--h7);
+  line-height: 2rem;
+}
+
+.h8 {
+  font-size: var(--h8);
+  line-height: 2rem;
+}
+
+// Horizontal rule.
+hr {
+  background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%,$captionColor 50%);
+  background-position: 0 50%;
+  background-repeat: repeat-x;
+  background-size: 100% 0.15rem;
+
+  width: 95%;
+  border: 0;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+// hr {
+//   box-sizing:content-box;
+//   height: 0; 
+//   overflow: visible; 
+// }
+
+
+p, ol, ul, dl, pre, blockquote {
+  margin-bottom: 1rem;
+}
+
+
+
+// Lists ======================== //
+ul, ol {
+
+  li {
+    font-feature-settings: 'kern', 'onum', 'liga';
+    margin-left: 2rem;
+
+    ol, ul {
+      padding-top: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 2rem;
+    }
+  }
+}
+
+// Ordered lists.
+ol {
+  list-style-type: none;
+
+  li {
+    counter-increment: top-level;
+
+    &:before {
+      content: counter(top-level) '.';
+      font-feature-settings: 'lnum', 'tnum';
+      margin-left: -3rem;
+      position: absolute;
+      text-align: right;
+      width: 2em;
+    }
+
+    ul {
+
+      li {
+
+        &:before {
+          content: '';
+        }
+
+        ol {
+
+          li {
+            counter-increment: alt-level;
+
+            &:before {
+              content: counter(alt-level) '.';
+            }
+          }
+        }
+      }
+    }
+
+    ol {
+
+      li {
+        counter-increment: sub-level;
+
+        &:before {
+          content: counter(top-level) '.' counter(sub-level);
+        }
+
+        ul {
+
+          li {
+
+            &:before {
+              content: '';
+            }
+          }
+        }
+
+        ol {
+
+          li {
+            counter-increment: sub-sub-level;
+
+            &:before {
+              content: counter(top-level) '.' counter(sub-level) '.' counter(sub-sub-level);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Definition lists.
+dl {
+
+  dt, dd {
+    font-feature-settings: 'kern', 'onum', 'liga';
+    margin-left: 2rem;
+  }
+
+  dt {
+    font-weight: map-get($bodytype, bold);
+  }
+
+  dd + dt {
+    padding-top: 1rem;
+  }
+}
+
+// Tables ======================== //
+table {
+  @extend .h7;	
+
+  font-family: unquote(map-get($headingtype, font-family));
+  font-feature-settings: 'liga', 'lnum', 'tnum', 'kern';
+  font-style: normal;
+  font-weight: map-get($headingtype, regular);
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+
+    th {
+      @extend .h6;	
+      padding-bottom: 1px;
+    }
+  }
+}
+
+
+// Text-level ======================== //
+// Links.
+a {
+  color: $linkColor;
+  text-decoration: none;
+  transition: color .1s, background-color .1s;
+  background-color: transparent;
+
+  &:hover, &:active{
+    color: $hoverColor;
+    text-decoration: none;
+    outline-width:0;
+  }
+}
+
+// Nice underlines for text links.
+p a, li a {
+  background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%,lighten($linkColor,20%) 50%);
+  background-position: 0 93%;
+  background-repeat: repeat-x;
+  background-size: 100% 0.15rem;
+  text-shadow: 0.1rem 0 $backgroundColor,
+               0.15rem 0 $backgroundColor,
+              -0.1rem 0 $backgroundColor,
+              -0.15rem 0 $backgroundColor;
+
+  &:hover, &:active {
+    background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%,lighten($hoverColor,20%) 50%);
+  }
+}
+
+// Paragraphs. OpenType ligatures and oldstyle figures enabled if available.
+p {
+  font-feature-settings: 'kern', 'onum', 'liga';
+}
+
+abbr[title] {
+  border-bottom: none; 
+  text-decoration: underline; 
+  text-decoration: underline dotted; 
+}
+
+// Bold.
+b, strong, .bold {
+  font-weight: map-get($bodytype, bold);
+}
+
+dfn{
+  font-style:italic
+}
+
+// Italic.
+em, i, .italic {
+  font-style: map-get($bodytype, italic);
+}
+
+// Caption and inline small text.
+small, .caption {
+  font-size: var(--h8);
+  line-height: 2rem;	
+
+  font-family: unquote(map-get($headingtype, font-family));
+  font-style: normal;
+  font-weight: map-get($headingtype, regular);
+}
+
+small {
+  line-height: 1rem;
+}
+
+sub,
+sup {
+  font-size: var(--h8);
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+.caption {
+  color: $captionColor;
+}
+
+// Nice spacing for captions.
+h1 + .caption, .alpha + .caption, h2 + .caption, .beta + .caption, h3 + .caption, .gamma + .caption {
+  margin-top: -1rem;
+}
+
+.h4 + .caption, .h5 + .caption, .h6 + .caption {
+  margin-top: 0rem;
+}
+
+img {
+  border-style: none;
+}
+
+
+// Quotes.
+blockquote {
+
+  p {
+    border-left: 0.15rem solid $linkColor;
+    font-style: map-get($bodytype, italic);
+    padding-left: 1rem;
+  }
+}
+
+
+
+
+// Code block.
+code, pre,
+kbd, samp {
+  background-color: $codeBackgroundColor;
+  font-family: unquote(map-get($monospacetype, font-family));
+}
+
+pre {
+  display: block;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  // white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+code {
+  font-size: var(--h8);
+  line-height: 1rem;
+}
+
+.codeblock {
+  border-radius: 0.5rem;
+  padding: 1rem 1rem; 
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+// Letter space those capitals people, Jan Tschichold would be proud.
+.upper {
+  font-kerning: normal;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+// Real small caps.
+.small-caps {
+  font-feature-settings: 'smcp', 'kern';
+  font-kerning: normal;
+  letter-spacing: 0.1rem;
+}
+
+
+// Forms ======================== //
+
+button,
+input,
+optgroup,
+select,
+textarea {
+ font-family: inherit;
+ font-size: inherit;
+ line-height: inherit;
+}
+
+button,
+input { 
+  overflow: visible;
+}
+
+button,
+select { 
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+[type=checkbox],[type=radio]{
+ padding:0
+}
+
+legend {
+  color: inherit; 
+  display: table; 
+  max-width: 100%; 
+  white-space: normal; 
+}
+
+progress {
+   display: inline-block;
+  vertical-align: baseline;
+}
+
+ select {
+   text-transform: none;
+ }
+
+textarea {
+  overflow: auto;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield; 
+  outline-offset: -2px; 
+}
+
+ ::-webkit-search-decoration {
+   -webkit-appearance: none;
+ }
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; 
+  font: inherit; 
+}
+
+::-webkit-input-placeholder {
+ color: inherit;
+ opacity: 0.54;
+}
+
+::-moz-focus-inner {
+ border-style: none;
+ padding: 0;
+}
+
+:-moz-focusring {
+ outline: 1px dotted ButtonText;
+}
+
+
+
+// Embedded ======================== //
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+audio,
+canvas,
+audio,
+video {
+  display: inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+svg:not([fill]) {
+  fill: currentColor;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+
+  // Interactive ======================== //
+
+  details {
+    display: block;
+  }
+    
+  summary {
+    display: list-item;
+  }
+  
+  template {
+    display: none;
+  }
+  
+  [hidden] {
+    display: none;
+  }
+
+  
+// Scripting ======================== //
+
+  canvas {
+    display: inline-block;
+  }
+  
+  template {
+    display: none;
+  }
+
+
+// User interaction ======================== //
+
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea,
+[tabindex] {
+  -ms-touch-action: manipulation; 
+  touch-action: manipulation; 
+}
+
+
+// Accessibility ======================== //
+
+[aria-busy="true"] {
+  cursor: progress;
+}
+
+[aria-controls] {
+  cursor: pointer;
+}
+
+
+[aria-disabled="true"],
+[disabled] {
+  cursor: not-allowed;
+}
+
+
+[aria-hidden="false"][hidden]:not(:focus) {
+  clip: rect(0, 0, 0, 0);
+  display: inherit;
+  position: absolute;
+}
+
+
+// After Thoughts =========== //
+
+.noMargin {
+  margin: 0;
+}

@@ -1,0 +1,118 @@
+<!-- home.html -->
+
+<!-- #region complements ================ -->
+<section class="complements">
+
+  <div class="complement" [style.color]="base.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='base.hex' (dblclick)='colorClick(rgbComplement)'>
+
+    <div class='comp-key'>
+      <em>rgb complement</em>
+
+      <mat-icon icon='add' (click)='updateFavorites(rgbComplement)'></mat-icon>
+    </div>
+
+    <div class='comp-value' [ngSwitch]='colorMode' [style.color]="rgbComplement.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='rgbComplement.hex'>
+      <div *ngSwitchCase="'hex'">{{rgbComplement.hex}}</div>
+      <div *ngSwitchCase="'rgb'">{{rgbComplement.rgb}}</div>
+      <div *ngSwitchCase="'hsl'">{{rgbComplement.hsl}}</div>
+    </div>
+  </div>
+
+  <div class="complement" [style.color]="base.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='base.hex' (dblclick)='colorClick(rybComplement)'>
+
+    <div class='comp-key'>
+      <em>ryb complement</em>
+
+      <mat-icon icon='add' (click)='updateFavorites(rybComplement)'></mat-icon>
+    </div>
+
+    <div class='comp-value' [ngSwitch]='colorMode' [style.color]="rybComplement.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='rybComplement.hex'>
+      <div *ngSwitchCase="'hex'">{{rybComplement.hex}}</div>
+      <div *ngSwitchCase="'rgb'">{{rybComplement.rgb}}</div>
+      <div *ngSwitchCase="'hsl'">{{rybComplement.hsl}}</div>
+    </div>
+  </div>
+
+  <div class="complement" [style.color]="base.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='base.hex' (dblclick)='colorClick(inverted)'>
+
+    <div class='comp-key'>
+      <em>inverted</em>
+
+      <mat-icon icon='add' (click)='updateFavorites(inverted)'></mat-icon>
+    </div>
+
+    <div class='comp-value' [ngSwitch]='colorMode' [style.color]="inverted.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='inverted.hex'>
+      <div *ngSwitchCase="'hex'">{{inverted.hex}}</div>
+      <div *ngSwitchCase="'rgb'">{{inverted.rgb}}</div>
+      <div *ngSwitchCase="'hsl'">{{inverted.hsl}}</div>
+    </div>
+  </div>
+</section>
+<!-- #endregion complements ================ -->
+
+
+<!-- #region color schemes ================ -->
+<section class="color-schemes">
+  <div class="tabs">
+    <input type="radio" id="tab1" name="schemeTabs" value='analogous' [(ngModel)]="currentScheme">
+    <label for="tab1">Analogous</label>
+
+    <input type="radio" id="tab2" name="schemeTabs" value='triad' [(ngModel)]="currentScheme">
+    <label for="tab2">Triad</label>
+
+    <input type="radio" id="tab3" name="schemeTabs" value='tetrad' [(ngModel)]="currentScheme">
+    <label for="tab3">Tetrad</label>
+
+    <input type="radio" id="tab4" name="schemeTabs" value='splitComp' [(ngModel)]="currentScheme">
+    <label for="tab4">Split Comp</label>
+  </div>
+
+  <section class="analogous scheme" [@fade] *ngIf="currentScheme == 'analogous'">
+    <div class="color" *ngFor='let color of analogous' [style.color]="color.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='color.hex' (dblclick)='colorClick(color)'>
+      <div [ngSwitch]='colorMode'>
+        <div *ngSwitchCase="'hex'">{{color.hex}}</div>
+        <div *ngSwitchCase="'rgb'">{{color.rgb}}</div>
+        <div *ngSwitchCase="'hsl'">{{color.hsl}}</div>
+      </div>
+
+      <mat-icon icon='add' (click)='updateFavorites(color)'></mat-icon>
+    </div>
+  </section>
+
+  <section class="triad scheme" [@fade] *ngIf="currentScheme == 'triad'">
+    <div class="color" *ngFor='let color of triad' [style.color]="color.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='color.hex' (dblclick)='colorClick(color)'>
+      <div [ngSwitch]='colorMode'>
+        <div *ngSwitchCase="'hex'">{{color.hex}}</div>
+        <div *ngSwitchCase="'rgb'">{{color.rgb}}</div>
+        <div *ngSwitchCase="'hsl'">{{color.hsl}}</div>
+      </div>
+
+      <mat-icon icon='add' (click)='updateFavorites(color)'></mat-icon>
+    </div>
+  </section>
+
+  <section class="tetrad scheme" [@fade] *ngIf="currentScheme == 'tetrad'">
+    <div class="color" *ngFor='let color of tetrad' [style.color]="color.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='color.hex' (dblclick)='colorClick(color)'>
+      <div [ngSwitch]='colorMode'>
+        <div *ngSwitchCase="'hex'">{{color.hex}}</div>
+        <div *ngSwitchCase="'rgb'">{{color.rgb}}</div>
+        <div *ngSwitchCase="'hsl'">{{color.hsl}}</div>
+      </div>
+
+      <mat-icon icon='add' (click)='updateFavorites(color)'></mat-icon>
+    </div>
+  </section>
+
+  <section class="splitComp scheme" [@fade] *ngIf="currentScheme == 'splitComp'">
+    <div class="color" *ngFor='let color of splitComp' [style.color]="color.yiq > 128 ? '#494949' : '#FCFCFC' " [style.background]='color.hex' (dblclick)='colorClick(color)'>
+      <div [ngSwitch]='colorMode'>
+        <div *ngSwitchCase="'hex'">{{color.hex}}</div>
+        <div *ngSwitchCase="'rgb'">{{color.rgb}}</div>
+        <div *ngSwitchCase="'hsl'">{{color.hsl}}</div>
+      </div>
+
+      <mat-icon icon='add' (click)='updateFavorites(color)'></mat-icon>
+    </div>
+  </section>
+</section>
+<!-- #endregion color schemes ================ -->

@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import './scss/baseline';
+
+mat-icon, .tabs, a, em {
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Standard syntax */
+}
+
+mat-icon {
+  font-size: var(--h6);
+  cursor: pointer;
+
+  @include media (400px) {
+    font-size: 24px;
+  }
+}
