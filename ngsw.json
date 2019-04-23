@@ -1,0 +1,76 @@
+{
+  "configVersion": 1,
+  "timestamp": 1556047268930,
+  "index": "https://robertleroy.github.io/colors/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://robertleroy.github.io/colors/es2015-polyfills.c5dd28b362270c767b34.js",
+        "https://robertleroy.github.io/colors/favicon.ico",
+        "https://robertleroy.github.io/colors/index.html",
+        "https://robertleroy.github.io/colors/main.ef5a4100ed1f63ec1a1a.js",
+        "https://robertleroy.github.io/colors/polyfills.8bbb231b43165d65d357.js",
+        "https://robertleroy.github.io/colors/runtime.26209474bfa8dc87a77c.js",
+        "https://robertleroy.github.io/colors/styles.6655a5a306cbdb75176d.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://robertleroy.github.io/colors/assets/icons/icon-128x128.png",
+        "https://robertleroy.github.io/colors/assets/icons/icon-144x144.png",
+        "https://robertleroy.github.io/colors/assets/icons/icon-152x152.png",
+        "https://robertleroy.github.io/colors/assets/icons/icon-192x192.png",
+        "https://robertleroy.github.io/colors/assets/icons/icon-384x384.png",
+        "https://robertleroy.github.io/colors/assets/icons/icon-512x512.png",
+        "https://robertleroy.github.io/colors/assets/icons/icon-72x72.png",
+        "https://robertleroy.github.io/colors/assets/icons/icon-96x96.png",
+        "https://robertleroy.github.io/colors/assets/symbol-defs.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://robertleroy.github.io/colors/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "https://robertleroy.github.io/colors/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "https://robertleroy.github.io/colors/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "https://robertleroy.github.io/colors/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "https://robertleroy.github.io/colors/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "https://robertleroy.github.io/colors/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "https://robertleroy.github.io/colors/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "https://robertleroy.github.io/colors/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://robertleroy.github.io/colors/assets/symbol-defs.svg": "89c45ec20631d3788abcc0a350c8d3db04734ca7",
+    "https://robertleroy.github.io/colors/es2015-polyfills.c5dd28b362270c767b34.js": "b7a81c61d32b0b12737f0c13f45973ba391cd7f9",
+    "https://robertleroy.github.io/colors/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "https://robertleroy.github.io/colors/index.html": "96780ea57ed46b5e6e0d9f0e1c1f4d994beb53de",
+    "https://robertleroy.github.io/colors/main.ef5a4100ed1f63ec1a1a.js": "a6e9c25d725a04d17e33fc2d97995f3858a38ad2",
+    "https://robertleroy.github.io/colors/polyfills.8bbb231b43165d65d357.js": "ffa449995bf2eba2ccd0a002417214f7eb75e7b5",
+    "https://robertleroy.github.io/colors/runtime.26209474bfa8dc87a77c.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
+    "https://robertleroy.github.io/colors/styles.6655a5a306cbdb75176d.css": "362b38121779a2030e0c066fe872fe0b767fa524"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
