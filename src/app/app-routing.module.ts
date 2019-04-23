@@ -7,7 +7,7 @@ import { ShadesComponent } from './shades/shades.component';
 import { ShifterComponent } from './shifter/shifter.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'mixer', component: MixerComponent },
   { path: 'shifter', component: ShifterComponent },
