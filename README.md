@@ -8,6 +8,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - ng build --prod
 - ngh --dir=dist/colors
 
-## Heading
 
-Content `with hilight`.
