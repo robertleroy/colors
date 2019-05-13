@@ -5,7 +5,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## angular-cli-ghpages
 
-- ng build --prod
-- ngh --dir=dist/colors
+npm i angular-cli-ghpages --save-dev
 
+- ng build --prod --base-href "https://robertleroy.github.io/colors/"
+- npx angular-cli-ghpages --dir=dist/colors
 
